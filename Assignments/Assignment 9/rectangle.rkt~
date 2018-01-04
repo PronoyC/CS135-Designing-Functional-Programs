@@ -1,0 +1,49 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-intermediate-lambda-reader.ss" "lang")((modname rectangle) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #t)))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; YOUR NAME  (ID#)
+;; CS135 Fall 2017
+;; Assignment 09, Question 02
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(require "rectanglelib.rkt")
+
+(define-struct cell (num used?))
+;; A Cell is a (make-cell Nat Bool)
+
+;; A Grid is a (listof (listof Cell))
+;; requires: the grid contains a non-empty list of non-empty lists,
+;;  all the same length.
+
+(define-struct rect (x y w h))
+;; A Rect is a (make-rect Nat Nat Nat Nat)
+
+(define-struct state (grid rects))
+;; A State is a (make-state Grid (listof Rect))
+
+
+;; Here are a couple of constants that can be used to define
+;; the puzzle in the assignment, and a random larger puzzle.
+
+(define puzz '((0 0 0 0 0 5 0)
+               (0 0 0 0 0 2 2)
+               (0 3 0 6 3 2 0)
+               (4 0 0 0 0 0 0)
+               (0 0 0 4 0 4 0)
+               (2 0 6 0 2 4 0)
+               (0 0 0 0 0 0 0)))
+
+(define big-puzz '((4 0 7 0 0 0 0 0 0 0 0 21 0)
+                   (0 3 2 0 0 0 0 0 0 0 0 0 2)
+                   (0 0 0 0 0 0 0 2 3 0 0 0 0)
+                   (0 0 0 20 0 0 0 0 0 0 0 0 5)
+                   (0 2 0 0 0 0 0 4 0 0 0 0 0)
+                   (0 0 3 0 0 0 0 0 0 0 0 0 0)
+                   (3 0 0 0 0 5 2 4 0 0 0 0 0)
+                   (0 0 0 0 0 2 0 6 0 0 0 0 0)
+                   (0 0 0 20 0 0 0 0 0 0 0 0 0)
+                   (0 0 0 0 0 0 0 0 0 0 0 0 0)
+                   (0 0 0 0 0 0 0 0 0 0 0 24 0)
+                   (0 0 0 0 4 0 4 0 0 0 4 0 0)
+                   (0 0 3 0 0 0 0 0 0 0 8 0 2)))

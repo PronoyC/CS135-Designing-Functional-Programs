@@ -1,0 +1,31 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname trains) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor mixed-fraction #f #t none #f () #t)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; YOUR NAME  (ID#)
+;; CS135 Fall 2017
+;; Assignment 04, Problem 4
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(require "a04lib.rkt")
+
+
+;; The unit structure is defined in a04lib.rkt.  The require
+;; statement, above, is all that's needed to have it take
+;; effect here.  The following comment is here just so the
+;; type definitions that follow make sense.
+
+;; (define-struct unit (type serial))
+
+;; -------- Q4a --------------
+;; A Unit-Type is ...
+
+;; A Unit is ...
+
+;; A Train is ...
+
+
+;; -------- Q4b --------------
+
+;; string->train works by...

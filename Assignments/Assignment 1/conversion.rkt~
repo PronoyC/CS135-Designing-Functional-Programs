@@ -1,0 +1,69 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname conversion) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #t)))
+;;
+;; ***************************************************
+;;   Pronoy Chaudhuri (20709909)
+;;   CS 135 Fall 2017
+;;   Assignment 01, Problem 2
+;; ***************************************************
+;;
+
+;; Problem 2 (a)
+
+; Purpose: (m/s->mph) converts metres per second to miles per hour,
+;          consuming m as metres per second
+
+; Contract: Num -> Num
+
+; Examples:
+(check-expect (m/s->mph 2.45872) 5.5)
+(check-expect (m/s->mph 3.3528) 7.5) 
+
+; Definition:
+(define (m/s->mph m)
+  (* (/ m 1609.344) 3600))
+
+; Tests:
+(check-expect (m/s->mph 20.34032) 45.5)
+(check-expect (m/s->mph 15.42288) 34.5)
+
+;; Problem 2 (b)
+
+; Purpose: (mph->S/mfn) converts miles per hour to Smoots
+;          per millifortnight, consuming m as miles per hour
+
+; Contract: Num -> Num
+
+; Examples:
+;(check-expect (mph->S/mfn 2.45872) 5.5)
+;(check-expect (mph->S/mfn 3.3528) 7.5) 
+
+; Definition:
+(define (mph->S/mfn m)
+ (* (/ m (m/s->mph 1.7018) 3600)1209.6))
+
+; Tests:
+;(check-expect (mph->S/mfn 20.34032) 45.5)
+;(check-expect (mph->S/mfn 15.42288) 34.5)
+
+;; Problem 2 (c)
+
+; Purpose: (mpg->L/100km g) converts miles per gallon to litres
+;          per 100km, consuming g as gallons
+
+; Contract: Num -> Num
+
+; Examples:
+;(check-expect (mpg->L/100km 1) 235.21)
+;(check-expect (mpg->L/100km g 3.3528) 7.5)
+
+(define (mpg->L/100km g)
+  (/ (* g 3.785411784) (/ 1.609344 100)))
+
+; Tests:
+;(check-expect (mpg->L/100km g 20.34032) 45.5)
+;(check-expect (mpg->L/100km g 15.42288) 34.5)
+
+
+  

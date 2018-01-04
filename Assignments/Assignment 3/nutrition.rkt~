@@ -1,0 +1,21 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname nutrition) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #t)))
+;;
+;; ***************************************************
+;;   Pronoy Chaudhuri (20709909)
+;;   CS 135 Fall 2017
+;;   Assignment 03, Problem 2
+;; ***************************************************
+;;
+
+;; A Nutri-Fact is a (make-nutri-fact Str Num Num Num Num Num)
+;; requires: 0 < serving
+;; fat + carbs + protein <= serving
+;; 0 <= sugar <= carbs
+;; 0 <= fat, protein
+(define-struct nutri-fact (name serving fat carbs sugar protein))
+
+;; 3(a)
+
+;; my-nutri-fact-fn: nutri-fact -> Any

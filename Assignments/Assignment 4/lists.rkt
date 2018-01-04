@@ -1,0 +1,91 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname lists) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #t)))
+;;
+;; ***************************************************
+;;   Pronoy Chaudhuri (20709909)
+;;   CS 135 Fall 2017
+;;   Assignment 04, Problem 2
+;; ***************************************************
+;;
+
+;; 2(a)
+
+;; (sum-positive list) consumes a list and produces the sum
+;; of the positive integers in the list
+;; sum-positive: (listof Int) -> Nat
+;; Examples:
+(check-expect (sum-positive (cons 5 (cons -3 (cons 4 empty)))) 9)
+(check-expect (sum-positive (cons -3 (cons -3 (cons 4 empty)))) 4)
+(check-expect (sum-positive empty) 0)
+
+(define (sum-positive list)
+  (cond [(empty? list) 0]
+        [(positive? (first list)) (+ (first list) (sum-positive (rest list)))]
+        [else (sum-positive (rest list))]))
+
+;; Tests:
+(check-expect (sum-positive (cons -3 (cons -3 (cons -30 empty)))) 0)
+(check-expect (sum-positive (cons 4 (cons 5 (cons 6 empty)))) 15)
+
+;; 2(b)
+
+;; (contains? elem list) consumes an element and a list and checks
+;; if elem is in list
+;; contains?: Any (listof Any) -> Bool
+;; Examples:
+(check-expect (contains? 'fun (cons 'racket (cons 'is (cons 'fun empty)))) true)
+(check-expect (contains? 'fun (cons 'racket (cons 'cs (cons 'na empty)))) false)
+(check-expect (contains? 'test empty) false)
+
+(define (contains? elem list)
+  (cond [(empty? list) false]
+        [(eq? elem (first list)) true]
+        [else (contains? elem (rest list))]))
+
+;; Tests:
+(check-expect (contains? 6 (cons 'hi (cons 6 (cons "tango" empty)))) true)
+(check-expect (contains? "cs" (cons 'racket (cons 'cs (cons 'na empty)))) false)
+
+;; 2(c)
+
+;; (has-duplicate? list) checks if an item in list appears more than once
+;; has-duplicate?: (listof Any) -> Bool
+;; Examples:
+(check-expect (has-duplicate? (cons 1 (cons 2 (cons 2 empty)))) true)
+(check-expect (has-duplicate? (cons 1 (cons 'alpha (cons 2 empty)))) false)
+(check-expect (has-duplicate? empty) false)
+
+(define (has-duplicate? list)
+  (cond [(empty? list) false]
+        [(contains? (first list) (rest list)) true] 
+        [else (has-duplicate? (rest list))]))
+
+;; Tests:
+(check-expect (has-duplicate? (cons "hi" (cons 69 (cons "hi" empty)))) true)
+(check-expect (has-duplicate? (cons 1 (cons 'beta (cons "beta" empty)))) false)
+
+;; 2(d)
+
+;; (keep-ints list) produces a list of integers in list in original order
+;; keep-ints: (listof Any) -> (listof Int)
+;; Examples:
+(check-expect (keep-ints (cons 'a (cons 1 (cons "b" (cons 2 empty)))))
+              (cons 1 (cons 2 empty)))
+(check-expect (keep-ints (cons 2 (cons 1 (cons "b" (cons 2 empty)))))
+              (cons 2 (cons 1 (cons 2 empty))))
+(check-expect (keep-ints empty) empty)
+
+(define (keep-ints list)
+  (cond [(empty? list) empty]
+        [(integer? (first list)) (cons (first list) (keep-ints (rest list)))] 
+        [else (keep-ints (rest list))]))
+
+;; Tests:
+(check-expect (keep-ints (cons 'a (cons 0.5 (cons "b" (cons "hi" empty)))))
+              empty)
+(check-expect (keep-ints (cons 54 (cons "hi" (cons 55 (cons 2.5 empty)))))
+              (cons 54(cons 55 empty)))
+
+
+

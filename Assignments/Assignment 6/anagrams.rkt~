@@ -1,0 +1,30 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-abbr-reader.ss" "lang")((modname anagrams) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+;;
+;; ***************************************************
+;;   Pronoy Chaudhuri (20709909)
+;;   CS 135 Fall 2017
+;;   Assignment 06, Problem 2
+;; ***************************************************
+;;
+
+;; 2(a)
+
+(define (biggest-char lst)
+  (cond
+    [(empty? lst) empty]
+    [(> (first lst) (second lst))
+     (bigger-char (cons (first lst) 
+
+;; (sort-chars lst) consumes a list and produces the same list in sorted order
+;; sort-chars: (listof Char) -> (listof Char)
+;; Examples:
+(check-expect (sort-chars (list #\o #\r #\d #\e #\r))
+              (list #\d #\e #\o #\r #\r))
+(check-expect (sort-chars empty) empty)
+
+(define (sort-chars lst)
+  (cond
+    [(empty? lst) empty]
+    [(> 
